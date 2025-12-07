@@ -15,35 +15,43 @@ const Footer: React.FC = () => {
               India's trusted waterproofing experts. We provide guaranteed solutions for residential, commercial, and industrial properties using advanced chemical technology.
             </p>
             <div className="flex gap-4">
+              {/* Facebook Icon */}
               <a 
                 href={SOCIAL_LINKS.facebook} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/80 border border-slate-700 text-slate-400 hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-md group" 
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-[#1877F2] text-white shadow-lg border border-transparent hover:shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" 
                 aria-label="Visit our Facebook Page"
                 title="Facebook"
               >
-                <Facebook size={24} className="group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                <Facebook size={20} className="group-hover:scale-110 transition-transform duration-300" />
               </a>
+              
+              {/* Instagram Icon */}
               <a 
-                href={SOCIAL_LINKS.instagram} 
+                href={SOCIAL_LINKS.instagram}
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/80 border border-slate-700 text-slate-400 hover:bg-[#E4405F] hover:border-[#E4405F] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-md group" 
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-tr from-[#fdf497] via-[#f09433] via-[#dc2743] via-[#cc2366] to-[#bc1888] text-white shadow-lg border border-transparent hover:shadow-pink-500/30 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" 
                 aria-label="Visit our Instagram Profile"
                 title="Instagram"
               >
-                <Instagram size={24} className="group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                <Instagram size={20} className="group-hover:scale-110 transition-transform duration-300" />
               </a>
+
+              {/* YouTube Icon */}
               <a 
                 href={SOCIAL_LINKS.youtube} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/80 border border-slate-700 text-slate-400 hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-md group" 
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF0000] text-white shadow-lg border border-transparent hover:shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" 
                 aria-label="Visit our YouTube Channel"
                 title="YouTube"
               >
-                <Youtube size={24} className="group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                <Youtube size={20} className="group-hover:scale-110 transition-transform duration-300" />
               </a>
             </div>
           </div>
