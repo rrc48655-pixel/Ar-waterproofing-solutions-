@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Star, Phone, ChevronDown, ChevronUp, ShieldCheck, AlertTriangle, ChevronLeft, ChevronRight } from 'lucide-react';
-import { SERVICES, TESTIMONIALS, PROCESS_STEPS, FAQS, PHONE_NUMBER, WHATSAPP_LINK, KEY_STATS, BRAND_PILLARS, HERO_IMAGES, GALLERY_IMAGES, IMAGES } from '../constants';
+import { SERVICES, TESTIMONIALS, PROCESS_STEPS, FAQS, PHONE_NUMBER, WHATSAPP_LINK, KEY_STATS, BRAND_PILLARS, HERO_IMAGES, PROJECTS, IMAGES } from '../constants';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
 import SEO from '../components/SEO';
+import ProjectCard from '../components/ProjectCard';
 
 const Home: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -238,17 +239,8 @@ const Home: React.FC = () => {
            </div>
            
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {GALLERY_IMAGES.map((slide, index) => (
-                 <div 
-                   key={index} 
-                   className="relative overflow-hidden group h-80 md:h-96"
-                 >
-                    <img src={slide.url} alt={slide.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-10">
-                       <h3 className="text-2xl font-bold text-white mb-2">{slide.title}</h3>
-                       <p className="text-gray-300 text-sm">{slide.description}</p>
-                    </div>
-                 </div>
+              {PROJECTS.slice(0, 2).map((project) => (
+                 <ProjectCard key={project.id} project={project} />
               ))}
            </div>
            
