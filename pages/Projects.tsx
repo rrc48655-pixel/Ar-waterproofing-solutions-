@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
 import { MapPin, Eye } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const [showBefore, setShowBefore] = useState(false);
@@ -129,6 +130,11 @@ const Projects: React.FC = () => {
 
   return (
     <div className="pt-20 font-sans">
+      <SEO 
+        title="Waterproofing Projects in Hyderabad | AR Solutions Portfolio"
+        description="View our successful waterproofing projects in Hyderabad. See how we've protected residential and commercial buildings from severe water damage."
+        keywords="waterproofing projects Hyderabad, AR Waterproofing portfolio, structural repair cases"
+      />
       <div className="bg-slate-900 py-24 text-center">
         <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6">Our Work Speaks</h1>
         <p className="text-slate-300 max-w-2xl mx-auto px-4 text-lg">

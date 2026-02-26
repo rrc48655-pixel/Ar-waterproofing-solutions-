@@ -24,6 +24,82 @@ import {
 } from 'lucide-react';
 import { Service, Project, Testimonial, NavItem, FAQ, ProcessStep, Stat, BrandPillar } from './types';
 
+// ==========================================
+// 📸 IMAGE CONFIGURATION CENTER
+// Replace the URLs below with your own image paths
+// Local images: "/images/filename.jpg" (put in public folder)
+// External images: "https://example.com/image.jpg"
+// ==========================================
+
+export const IMAGES = {
+  // Hero Carousel Images (Home Page)
+  hero: [
+    "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=1600", // Slide 1
+    "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1600", // Slide 2
+    "https://images.unsplash.com/photo-1599708153386-fa2e2bc1356e?auto=format&fit=crop&q=80&w=1600", // Slide 3
+    "https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?auto=format&fit=crop&q=80&w=1600"  // Slide 4
+  ],
+
+  // About Page Images
+  about: {
+    mission: "https://images.unsplash.com/photo-1581094794329-cd109c090150?auto=format&fit=crop&q=80&w=800",
+    safety: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800"
+  },
+
+  // Service Thumbnails
+  services: {
+    terrace: "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&q=80&w=800",
+    bathroom: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&q=80&w=800",
+    grouting: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800",
+    basement: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=800"
+  },
+
+  // Project Gallery (Before/After)
+  projects: {
+    p1: {
+      before: "https://images.unsplash.com/photo-1628190222444-a0c5c832281a?q=80&w=800",
+      after: "https://images.unsplash.com/photo-1596263576926-2820c7e2b724?auto=format&fit=crop&q=80&w=800"
+    },
+    p2: {
+      before: "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
+    },
+    p3: {
+      before: "https://images.unsplash.com/photo-1517646331032-9e8563c523a1?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=800"
+    },
+    p4: {
+      before: "https://images.unsplash.com/photo-1590674899505-1c5c41951f89?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1562778612-e1e0cda9915c?auto=format&fit=crop&q=80&w=800"
+    },
+    p5: {
+      before: "https://images.unsplash.com/photo-1633505766297-c88f3eb92e44?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1572331165267-854da2b00dc1?auto=format&fit=crop&q=80&w=800"
+    },
+    p6: {
+      before: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800"
+    }
+  },
+
+  // Home Page Gallery Section
+  gallery: {
+    terrace: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1200",
+    bathroom: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&q=80&w=1200",
+    exterior: "https://images.unsplash.com/photo-1599708153386-fa2e2bc1356e?auto=format&fit=crop&q=80&w=1200",
+    industrial: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200"
+  },
+
+  // Background Patterns
+  patterns: {
+    carbon: "https://www.transparenttextures.com/patterns/carbon-fibre.png"
+  }
+};
+
+// ==========================================
+// CONSTANTS
+// ==========================================
+
 export const COMPANY_NAME = "AR Waterproofing Solutions";
 export const TAGLINE = "Trusted Waterproofing Experts for Long-Lasting Protection";
 export const PHONE_NUMBER = "+91 86399 15784";
@@ -70,7 +146,7 @@ export const KEY_STATS: Stat[] = [
 export const BRAND_PILLARS: BrandPillar[] = [
   {
     title: "Technical Diagnosis",
-    description: "We don't guess. We use thermal imaging and moisture meters to pinpoint the exact source of leakage.",
+    description: "We don't guess. We use digital moisture meters and technical analysis to pinpoint the exact source of leakage.",
     icon: Microscope
   },
   {
@@ -93,7 +169,7 @@ export const BRAND_PILLARS: BrandPillar[] = [
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     title: "1. Scientific Inspection",
-    description: "Site visit with thermal scanners & moisture meters to detect hidden leak sources.",
+    description: "Site visit with digital moisture meters & technical assessment to detect hidden leak sources.",
     icon: Search
   },
   {
@@ -144,6 +220,31 @@ export const MAINTENANCE_TIPS = [
   "Ensure water tank overflows are piped away from the building walls."
 ];
 
+// Re-export images for Home Page consumption
+export const HERO_IMAGES = IMAGES.hero;
+export const GALLERY_IMAGES = [
+  {
+    url: IMAGES.gallery.terrace,
+    title: "Terrace Waterproofing",
+    description: "Multi-layer protection for long-lasting durability"
+  },
+  {
+    url: IMAGES.gallery.bathroom,
+    title: "Bathroom Leakage Repair",
+    description: "Epoxy grouting without breaking tiles"
+  },
+  {
+    url: IMAGES.gallery.exterior,
+    title: "Exterior Wall Coatings",
+    description: "Weather-proof paint solutions"
+  },
+  {
+    url: IMAGES.gallery.industrial,
+    title: "Industrial Solutions",
+    description: "Heavy-duty protection for factories"
+  }
+];
+
 export const SERVICES: Service[] = [
   {
     id: 'terrace-walls',
@@ -159,7 +260,7 @@ export const SERVICES: Service[] = [
       { question: "Does this replace tiling?", answer: "It can be applied over existing tiles or concrete. No need to remove old tiles." }
     ],
     icon: CloudRain,
-    image: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&q=80&w=800'
+    image: IMAGES.services.terrace
   },
   {
     id: 'wet-areas',
@@ -174,7 +275,7 @@ export const SERVICES: Service[] = [
       { question: "Is the tank coating safe?", answer: "Yes, we use certified food-grade epoxy suitable for potable water." }
     ],
     icon: Bath,
-    image: 'https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&q=80&w=800'
+    image: IMAGES.services.bathroom
   },
   {
     id: 'grouting',
@@ -189,7 +290,7 @@ export const SERVICES: Service[] = [
       { question: "How long does the grout take to set?", answer: "PU foam reacts with water and sets within minutes, stopping leaks instantly." }
     ],
     icon: Syringe,
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800'
+    image: IMAGES.services.grouting
   },
   {
     id: 'pools-basements',
@@ -204,7 +305,7 @@ export const SERVICES: Service[] = [
       { question: "Do you treat damp walls in basements?", answer: "Yes, we use negative-side waterproofing to stop water entering from the soil." }
     ],
     icon: Waves,
-    image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=800'
+    image: IMAGES.services.basement
   }
 ];
 
@@ -219,8 +320,8 @@ export const PROJECTS: Project[] = [
     problem: 'Severe water ponding and leakage into 4th-floor offices causing electrical hazards.',
     solution: 'Removed old screed, repaired cracks with V-grooving, applied 2 coats primer + 3 coats fiber-reinforced acrylic.',
     outcome: '100% leak-free for 3 years. Reduced top-floor AC load due to heat reflection.',
-    beforeImage: 'https://picsum.photos/id/175/600/400',
-    afterImage: 'https://picsum.photos/id/1076/600/400'
+    beforeImage: IMAGES.projects.p1.before,
+    afterImage: IMAGES.projects.p1.after
   },
   {
     id: '2',
@@ -232,8 +333,8 @@ export const PROJECTS: Project[] = [
     problem: 'Groundwater seepage ruining expensive interiors and causing mold smell.',
     solution: 'Removed plaster, applied crystalline slurry to concrete, and used PU injection for active leak points.',
     outcome: 'Completely dry basement. Client successfully installed wooden flooring post-treatment.',
-    beforeImage: 'https://picsum.photos/id/103/600/400',
-    afterImage: 'https://picsum.photos/id/101/600/400'
+    beforeImage: IMAGES.projects.p2.before,
+    afterImage: IMAGES.projects.p2.after
   },
   {
     id: '3',
@@ -245,8 +346,8 @@ export const PROJECTS: Project[] = [
     problem: 'High internal temperature affecting medicine storage and leaks at J-hook bolts.',
     solution: 'Applied elastomeric cool-roof coating and sealed all bolt joints with PU sealant.',
     outcome: 'Internal temperature dropped by 7°C. Zero leaks during cyclone season.',
-    beforeImage: 'https://picsum.photos/id/203/600/400',
-    afterImage: 'https://picsum.photos/id/195/600/400'
+    beforeImage: IMAGES.projects.p3.before,
+    afterImage: IMAGES.projects.p3.after
   },
   {
     id: '4',
@@ -258,8 +359,8 @@ export const PROJECTS: Project[] = [
     problem: 'Cracks in RCC tank causing water loss and contamination.',
     solution: 'Crack injection followed by 2 coats of solvent-free, food-grade epoxy.',
     outcome: 'Hygienic water storage and stopped structural deterioration.',
-    beforeImage: 'https://picsum.photos/id/111/600/400',
-    afterImage: 'https://picsum.photos/id/971/600/400'
+    beforeImage: IMAGES.projects.p4.before,
+    afterImage: IMAGES.projects.p4.after
   },
   {
     id: '5',
@@ -271,8 +372,8 @@ export const PROJECTS: Project[] = [
     problem: 'Tile grout failure causing leakage into rooms below.',
     solution: 'Re-grouted with epoxy and applied transparent polyurethane coating.',
     outcome: 'Aesthetic preserved, leaks stopped immediately.',
-    beforeImage: 'https://picsum.photos/id/119/600/400',
-    afterImage: 'https://picsum.photos/id/124/600/400'
+    beforeImage: IMAGES.projects.p5.before,
+    afterImage: IMAGES.projects.p5.after
   },
   {
     id: '6',
@@ -284,8 +385,8 @@ export const PROJECTS: Project[] = [
     problem: 'Water ingress through joints damaging machinery.',
     solution: 'Installed backer rods and filled with gun-grade polysulphide sealant.',
     outcome: 'Flexible, watertight joints capable of withstanding forklift traffic.',
-    beforeImage: 'https://picsum.photos/id/238/600/400',
-    afterImage: 'https://picsum.photos/id/239/600/400'
+    beforeImage: IMAGES.projects.p6.before,
+    afterImage: IMAGES.projects.p6.after
   }
 ];
 
@@ -295,7 +396,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Rajesh Reddy',
     role: 'Homeowner',
     location: 'Banjara Hills, Hyderabad',
-    content: 'AR Waterproofing solved a persistent leakage issue in my terrace that three other contractors failed to fix. Their thermal scanning diagnosis was accurate, and the team was highly professional.',
+    content: 'AR Waterproofing solved a persistent leakage issue in my terrace that three other contractors failed to fix. Their technical diagnosis was accurate, and the team was highly professional.',
     rating: 5,
     date: 'Oct 2023'
   },

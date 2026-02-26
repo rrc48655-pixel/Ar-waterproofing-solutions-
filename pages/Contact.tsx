@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
-import { Phone, MapPin, Send, Clock, AlertTriangle, Shield, CheckCircle } from 'lucide-react';
-import { ADDRESS, PHONE_NUMBER, WORKING_HOURS, WHATSAPP_LINK } from '../constants';
+import React, { useState, useEffect, useRef } from 'react';
+import { Phone, MapPin, Send, Clock, AlertTriangle, Shield, CheckCircle, Info } from 'lucide-react';
+import { ADDRESS, PHONE_NUMBER, WORKING_HOURS, WHATSAPP_LINK, SERVICE_AREAS } from '../constants';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
+import SEO from '../components/SEO';
+
+// Add global type definition for Leaflet 'L'
+declare global {
+  interface Window {
+    L: any;
+  }
+}
 
 interface FormErrors {
   name?: string;
@@ -10,16 +18,76 @@ interface FormErrors {
   service?: string;
 }
 
+interface LocationCoords {
+  name: string;
+  lat: number;
+  lng: number;
+  radius: number;
+  description: string;
+}
+
+const LOCATIONS: LocationCoords[] = [
+  { name: 'Hyderabad (HQ)', lat: 17.3850, lng: 78.4867, radius: 25000, description: 'Central Hub - 24/7 Emergency Teams Available' },
+  { name: 'Secunderabad', lat: 17.4399, lng: 78.4983, radius: 10000, description: 'Residential & Commercial Specialists' },
+  { name: 'Warangal', lat: 17.9689, lng: 79.5941, radius: 15000, description: 'Regional Service Center for North Telangana' },
+  { name: 'Visakhapatnam', lat: 17.6868, lng: 83.2185, radius: 15000, description: 'Coastal Waterproofing & Marine Concrete Repair' },
+  { name: 'Vijayawada', lat: 16.5062, lng: 80.6480, radius: 12000, description: 'Expert Sump & Tank Waterproofing Hub' },
+  { name: 'Gachibowli', lat: 17.4401, lng: 78.3489, radius: 5000, description: 'IT Corridor Commercial Solutions' }
+];
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', location: '', service: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [activeArea, setActiveArea] = useState<LocationCoords | null>(null);
+  
+  const mapRef = useRef<any>(null);
+  const mapInstance = useRef<any>(null);
+
+  // Initialize Map
+  useEffect(() => {
+    // Check if Leaflet L is available on window
+    if (!window.L) return;
+
+    if (!mapInstance.current) {
+      // Fix: Access L from window to satisfy TypeScript
+      mapInstance.current = window.L.map('service-map').setView([17.3850, 78.4867], 7);
+      
+      window.L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+      }).addTo(mapInstance.current);
+
+      LOCATIONS.forEach(loc => {
+        // Add Marker
+        const marker = window.L.marker([loc.lat, loc.lng]).addTo(mapInstance.current);
+        
+        // Add Service Radius Circle
+        window.L.circle([loc.lat, loc.lng], {
+          color: '#C5A059',
+          fillColor: '#C5A059',
+          fillOpacity: 0.1,
+          radius: loc.radius
+        }).addTo(mapInstance.current);
+
+        marker.on('click', () => {
+          mapInstance.current.setView([loc.lat, loc.lng], 11);
+          setActiveArea(loc);
+        });
+      });
+    }
+
+    return () => {
+      if (mapInstance.current) {
+        mapInstance.current.remove();
+        mapInstance.current = null;
+      }
+    };
+  }, []);
 
   const validateForm = (): boolean => {
     let tempErrors: FormErrors = {};
     let isValid = true;
 
-    // Name Validation
     if (!formData.name.trim()) {
       tempErrors.name = "Full Name is required";
       isValid = false;
@@ -28,7 +96,6 @@ const Contact: React.FC = () => {
       isValid = false;
     }
 
-    // Phone Validation (Indian Format)
     const phoneRegex = /^[6-9]\d{9}$/;
     const cleanPhone = formData.phone.replace(/\D/g, '');
     
@@ -40,13 +107,11 @@ const Contact: React.FC = () => {
       isValid = false;
     }
 
-    // Location Validation
     if (!formData.location.trim()) {
       tempErrors.location = "Location/Area is required";
       isValid = false;
     }
 
-    // Service Validation
     if (!formData.service) {
       tempErrors.service = "Please select a problem type";
       isValid = false;
@@ -72,15 +137,25 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (validateForm()) {
       setSubmitted(true);
-      // The data is now ready to be sent via the WhatsApp button in the success view
+    }
+  };
+
+  const resetMap = () => {
+    if (mapInstance.current) {
+      mapInstance.current.setView([17.3850, 78.4867], 7);
+      setActiveArea(null);
     }
   };
 
   return (
     <div className="pt-20 font-sans">
+      <SEO 
+        title="Contact AR Waterproofing | Best Services in Hyderabad"
+        description="Get a free quote for waterproofing services in Hyderabad. Contact AR Waterproofing Solutions for expert leak detection and permanent structural repairs."
+        keywords="contact waterproofing Hyderabad, free inspection Hyderabad, AR Waterproofing contact"
+      />
       <div className="bg-slate-900 py-24 text-center">
         <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6">Get a Free Inspection</h1>
         <p className="text-slate-300 max-w-2xl mx-auto px-4 text-lg">Call us or fill the form. Our engineers will visit your site within 24 hours.</p>
@@ -89,7 +164,6 @@ const Contact: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Emergency Banner */}
           <div className="bg-red-50 border border-red-100 rounded-xl p-6 mb-16 flex flex-col md:flex-row items-center justify-between gap-6">
              <div className="flex items-center gap-4">
                 <div className="bg-red-100 p-3 rounded-full text-red-600">
@@ -105,9 +179,7 @@ const Contact: React.FC = () => {
              </a>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
-            {/* Contact Info Side */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-8">Contact Information</h2>
               <p className="text-slate-600 mb-10 leading-relaxed">
@@ -147,7 +219,6 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-               {/* QR Code Section */}
                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6">
                   <div className="bg-white p-2 rounded-lg shadow-sm shrink-0">
                      <img 
@@ -161,12 +232,11 @@ const Contact: React.FC = () => {
                         <WhatsAppIcon size={20} className="text-green-500" /> Scan to Chat
                      </h4>
                      <p className="text-slate-500 text-sm mb-4">Instant WhatsApp connection. Send us photos of your leakage for a quick estimate.</p>
-                     <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="text-brand-600 font-bold text-sm hover:underline">Open in WhatsApp Web &rarr;</a>
+                     <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-600 font-bold text-sm hover:underline">Open in WhatsApp Web &rarr;</a>
                   </div>
                </div>
             </div>
 
-            {/* Form Side */}
             <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl relative overflow-hidden flex flex-col h-full">
                <div className="absolute top-0 left-0 w-full h-2 bg-brand-600"></div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">Book Appointment</h3>
@@ -189,9 +259,6 @@ const Contact: React.FC = () => {
                   >
                     <WhatsAppIcon size={24} /> Send via WhatsApp
                   </a>
-                  <p className="text-xs text-green-600 mt-4">
-                    *This ensures we get your exact location and details instantly.
-                  </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5" noValidate>
@@ -279,13 +346,81 @@ const Contact: React.FC = () => {
                   >
                     Submit Request <Send size={20} />
                   </button>
-                  <p className="text-xs text-center text-slate-400 mt-4 flex items-center justify-center gap-1">
-                     <Shield size={12} /> Your data is secure. We never spam.
-                  </p>
                 </form>
               )}
             </div>
+          </div>
 
+          {/* Interactive Map Section */}
+          <div className="mt-16 bg-gray-50 rounded-[2.5rem] p-4 md:p-12 border border-gray-100 shadow-inner">
+             <div className="text-center mb-12">
+                <span className="text-accent-500 font-bold tracking-widest uppercase text-xs">Coverage</span>
+                <h2 className="text-3xl font-extrabold text-slate-900 mt-2">Our Primary Service Hubs</h2>
+                <p className="text-slate-500 mt-4 max-w-xl mx-auto">Click on a marker to see service details for that specific region.</p>
+             </div>
+
+             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div className="lg:col-span-2 relative">
+                   <div id="service-map" className="shadow-2xl border-4 border-white"></div>
+                   
+                   {/* Floating Reset Control */}
+                   <button 
+                      onClick={resetMap}
+                      className="absolute top-4 right-4 z-[1000] bg-white text-slate-900 px-4 py-2 rounded-lg font-bold text-xs shadow-xl border border-gray-200 hover:bg-gray-50 transition-colors"
+                   >
+                      Reset View
+                   </button>
+                </div>
+
+                <div className="space-y-6">
+                   {activeArea ? (
+                      <div className="bg-white p-8 rounded-3xl shadow-xl border border-accent-500/20 animate-in fade-in slide-in-from-right-4 duration-300">
+                         <div className="w-12 h-12 bg-brand-600 text-white rounded-2xl flex items-center justify-center mb-6">
+                            <MapPin size={24} />
+                         </div>
+                         <h3 className="text-2xl font-bold text-brand-900 mb-2">{activeArea.name}</h3>
+                         <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs font-bold mb-6">
+                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            Operational Hub
+                         </div>
+                         <p className="text-slate-600 mb-8 leading-relaxed italic border-l-4 border-accent-500 pl-4">
+                            "{activeArea.description}"
+                         </p>
+                         <div className="space-y-4">
+                            <div className="flex items-center gap-3 text-sm font-bold text-slate-700">
+                               <Clock size={16} className="text-accent-500" />
+                               <span>24h Turnaround Time</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-sm font-bold text-slate-700">
+                               <Shield size={16} className="text-accent-500" />
+                               <span>Local Service Warranty</span>
+                            </div>
+                         </div>
+                         <button 
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="w-full mt-10 bg-brand-900 text-white py-4 rounded-xl font-bold hover:bg-accent-500 transition-colors shadow-lg"
+                         >
+                            Book in this Region
+                         </button>
+                      </div>
+                   ) : (
+                      <div className="bg-brand-900 text-white p-8 rounded-3xl shadow-xl border border-white/5 flex flex-col items-center text-center justify-center h-full min-h-[400px]">
+                         <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-6">
+                            <Info size={40} className="text-accent-500" />
+                         </div>
+                         <h3 className="text-xl font-bold mb-4">Select an Area</h3>
+                         <p className="text-brand-100 text-sm leading-relaxed mb-6">
+                            We currently operate in {SERVICE_AREAS.length} major districts across Telangana and Andhra Pradesh. Click a map marker to view localized response details.
+                         </p>
+                         <div className="flex flex-wrap gap-2 justify-center opacity-60">
+                            {SERVICE_AREAS.slice(0, 4).map(s => (
+                               <span key={s} className="bg-white/10 px-3 py-1 rounded-full text-[10px] uppercase font-bold tracking-widest">{s}</span>
+                            ))}
+                         </div>
+                      </div>
+                   )}
+                </div>
+             </div>
           </div>
         </div>
       </section>

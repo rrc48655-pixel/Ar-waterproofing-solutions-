@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { ADDRESS, COMPANY_NAME, EMAIL_ADDRESS, NAV_ITEMS, PHONE_NUMBER, SOCIAL_LINKS, SERVICE_AREAS } from '../constants';
 
+import logo from '../Waterproofing_20250830_114503_0000.png';
+
 const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-900 text-slate-300 font-sans border-t border-slate-800">
@@ -10,7 +12,19 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-6 tracking-wide">{COMPANY_NAME}</h3>
+            <Link to="/" className="flex items-center gap-3 mb-6 group">
+              <div className="h-12 w-12 overflow-hidden rounded-lg border border-slate-700 shadow-lg">
+                <img src={logo} alt={COMPANY_NAME} className="w-full h-full object-cover scale-110" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold text-white leading-tight tracking-tight">
+                  AR Waterproofing
+                </span>
+                <span className="text-[10px] text-brand-500 uppercase tracking-widest font-black">
+                  Solutions
+                </span>
+              </div>
+            </Link>
             <p className="text-sm leading-relaxed mb-6 text-slate-400">
               India's trusted waterproofing experts. We provide guaranteed solutions for residential, commercial, and industrial properties using advanced chemical technology.
             </p>

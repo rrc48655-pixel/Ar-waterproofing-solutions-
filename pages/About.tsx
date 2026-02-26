@@ -1,11 +1,17 @@
 import React from 'react';
 import { Shield, Users, Clock, Target, Award, HardHat, HeartHandshake, Check, Wrench, Microscope, Briefcase } from 'lucide-react';
-import { COMPANY_NAME, MAINTENANCE_TIPS } from '../constants';
+import { COMPANY_NAME, MAINTENANCE_TIPS, IMAGES } from '../constants';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const About: React.FC = () => {
   return (
     <div className="pt-20 font-sans">
+      <SEO 
+        title="About AR Waterproofing Solutions | Hyderabad's Experts"
+        description="Leading waterproofing specialists in Hyderabad with 12+ years of experience. We use advanced chemicals to provide permanent leak-proof solutions."
+        keywords="about AR Waterproofing, waterproofing experts Hyderabad, structural protection Hyderabad"
+      />
       {/* Header */}
       <div className="bg-slate-900 py-24 text-center">
         <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6">About {COMPANY_NAME}</h1>
@@ -23,7 +29,7 @@ const About: React.FC = () => {
                 At {COMPANY_NAME}, we believe that waterproofing is not just about applying chemicals—it's about engineering a permanent barrier against nature.
               </p>
               <p className="text-slate-600 leading-relaxed mb-6">
-                 We realized early on that 90% of waterproofing failures happen due to poor surface preparation and incorrect material selection. That's why we adopted a <strong>"Root Cause Analysis"</strong> approach. We don't just patch cracks; we use thermal imaging and moisture meters to understand <em>why</em> the leak is happening.
+                 We realized early on that 90% of waterproofing failures happen due to poor surface preparation and incorrect material selection. That's why we adopted a <strong>"Root Cause Analysis"</strong> approach. We don't just patch cracks; we use <strong>digital moisture meters</strong> to understand <em>why</em> the leak is happening.
               </p>
               
               <div className="grid grid-cols-3 gap-4 border-t border-gray-100 pt-8 mt-8">
@@ -44,7 +50,7 @@ const About: React.FC = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-gray-100 rounded-3xl transform -rotate-2"></div>
               <img 
-                src="https://picsum.photos/id/129/800/600" 
+                src={IMAGES.about.mission} 
                 alt="Engineers working" 
                 className="relative rounded-2xl shadow-2xl w-full object-cover h-[500px]"
               />
@@ -66,8 +72,8 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
              <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                 <Microscope className="text-brand-600 mb-4" size={32} />
-                <h3 className="text-xl font-bold mb-2">Thermal Imaging</h3>
-                <p className="text-slate-600 text-sm">Non-invasive scanning to detect temperature differences caused by trapped moisture behind walls.</p>
+                <h3 className="text-xl font-bold mb-2">Concrete Analysis</h3>
+                <p className="text-slate-600 text-sm">pH testing and acoustic sounding to assess the structural integrity of the concrete slab.</p>
              </div>
              <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                 <Wrench className="text-brand-600 mb-4" size={32} />
@@ -93,7 +99,7 @@ const About: React.FC = () => {
             {[
               { icon: Shield, title: "Genuine Materials", desc: "We use factory-sealed products from authorized brands only. No adulteration." },
               { icon: Users, title: "In-House Team", desc: "Our applicators are on our payroll, trained, and insured. We don't outsource critical tasks." },
-              { icon: Target, title: "Technical Diagnosis", desc: "We use moisture meters and thermal cameras to detect hidden leaks accurately." },
+              { icon: Target, title: "Technical Diagnosis", desc: "We use moisture meters and expert inspection to detect hidden leaks accurately." },
               { icon: Clock, title: "On-Time Completion", desc: "We stick to the schedule provided in our proposal. Strict penalties for delays." },
               { icon: Award, title: "Certified Applicators", desc: "Authorized by Dr. Fixit, Fosroc, and Sika for specialized coating applications." },
               { icon: HeartHandshake, title: "Transparent Pricing", desc: "Detailed quotations with no hidden costs. You pay for what you approve." },
@@ -167,7 +173,7 @@ const About: React.FC = () => {
                   </ul>
                </div>
                <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" alt="Safety First" className="rounded-2xl shadow-lg" />
+                  <img src={IMAGES.about.safety} alt="Safety First" className="rounded-2xl shadow-lg" />
                </div>
             </div>
          </div>

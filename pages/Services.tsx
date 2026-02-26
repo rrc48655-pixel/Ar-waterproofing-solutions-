@@ -1,14 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SERVICES } from '../constants';
+import { SERVICES, IMAGES } from '../constants';
 import { Check, AlertTriangle, PenTool, HelpCircle, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Services: React.FC = () => {
   return (
     <div className="pt-20 font-sans">
+      <SEO 
+        title="Our Waterproofing Services in Hyderabad | AR Solutions"
+        description="Comprehensive waterproofing services in Hyderabad. From terrace leakage to bathroom repairs, we offer guaranteed protection for all structural needs."
+        keywords="waterproofing services Hyderabad, terrace leakage repair, bathroom waterproofing Hyderabad"
+      />
       {/* Header */}
       <div className="bg-slate-900 py-24 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: `url('${IMAGES.patterns.carbon}')` }}
+        ></div>
         <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6 relative z-10">Our Services</h1>
         <p className="text-slate-300 max-w-2xl mx-auto px-4 text-lg relative z-10 leading-relaxed">
           Specialized waterproofing solutions tailored for Indian construction standards and climate conditions.
