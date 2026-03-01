@@ -57,28 +57,28 @@ export const IMAGES = {
   // Project Gallery (Before/After)
   projects: {
     p1: {
-      before: "https://images.unsplash.com/photo-1628190222444-a0c5c832281a?q=80&w=800",
-      after: "https://images.unsplash.com/photo-1596263576926-2820c7e2b724?auto=format&fit=crop&q=80&w=800"
+      before: "https://images.unsplash.com/photo-1541888081-0027f3110260?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800"
     },
     p2: {
-      before: "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&q=80&w=800",
-      after: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
+      before: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800"
     },
     p3: {
-      before: "https://images.unsplash.com/photo-1517646331032-9e8563c523a1?auto=format&fit=crop&q=80&w=800",
+      before: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800",
       after: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=800"
     },
     p4: {
-      before: "https://images.unsplash.com/photo-1590674899505-1c5c41951f89?auto=format&fit=crop&q=80&w=800",
-      after: "https://images.unsplash.com/photo-1562778612-e1e0cda9915c?auto=format&fit=crop&q=80&w=800"
+      before: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&q=80&w=800"
     },
     p5: {
-      before: "https://images.unsplash.com/photo-1633505766297-c88f3eb92e44?auto=format&fit=crop&q=80&w=800",
-      after: "https://images.unsplash.com/photo-1572331165267-854da2b00dc1?auto=format&fit=crop&q=80&w=800"
+      before: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1599708153386-fa2e2bc1356e?auto=format&fit=crop&q=80&w=800"
     },
     p6: {
-      before: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=800",
-      after: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800"
+      before: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=800",
+      after: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=800"
     }
   },
 
@@ -103,7 +103,7 @@ export const IMAGES = {
 export const COMPANY_NAME = "AR Waterproofing Solutions";
 export const TAGLINE = "Trusted Waterproofing Experts for Long-Lasting Protection";
 export const PHONE_NUMBER = "+91 86399 15784";
-export const EMAIL_ADDRESS = "contact@arwaterproofing.in";
+export const EMAIL_ADDRESS = "arwaterproofingservices@gmail.com";
 export const ADDRESS = "Hyderabad, Telangana";
 export const WHATSAPP_LINK = "https://wa.me/918639915784";
 
@@ -116,14 +116,10 @@ export const SOCIAL_LINKS = {
 export const SERVICE_AREAS = [
   "Hyderabad", 
   "Secunderabad", 
-  "Warangal", 
   "Hitech City",
   "Jubilee Hills",
   "Gachibowli",
-  "Visakhapatnam", 
-  "Vijayawada",
-  "Guntur",
-  "Telangana & AP (Major Districts)"
+  "Telangana (Major Districts)"
 ];
 
 export const WORKING_HOURS = "Mon - Sat: 9:00 AM - 8:00 PM";
@@ -133,6 +129,8 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Services', path: '/services' },
   { label: 'Projects', path: '/projects' },
   { label: 'About Us', path: '/about' },
+  { label: "FAQ's", path: '/faqs' },
+  { label: 'Reviews', path: '/reviews' },
   { label: 'Contact', path: '/contact' },
 ];
 
@@ -146,12 +144,12 @@ export const KEY_STATS: Stat[] = [
 export const BRAND_PILLARS: BrandPillar[] = [
   {
     title: "Technical Diagnosis",
-    description: "We don't guess. We use digital moisture meters and technical analysis to pinpoint the exact source of leakage.",
+    description: "We don't guess. We use technical analysis to pinpoint the exact source of leakage.",
     icon: Microscope
   },
   {
     title: "Premium Materials",
-    description: "Authorized applicators for Dr. Fixit, Fosroc, Sika, and Asian Paints. No diluted or sub-standard chemicals.",
+    description: "Authorized applicators for Dr. Fixit, Fosroc, Sika, MYK, and Bostik. No diluted or sub-standard chemicals.",
     icon: PaintBucket
   },
   {
@@ -169,7 +167,7 @@ export const BRAND_PILLARS: BrandPillar[] = [
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     title: "1. Scientific Inspection",
-    description: "Site visit with digital moisture meters & technical assessment to detect hidden leak sources.",
+    description: "Free inspection with technical assessment to detect hidden leak sources.",
     icon: Search
   },
   {
@@ -186,11 +184,6 @@ export const PROCESS_STEPS: ProcessStep[] = [
     title: "4. Layered Application",
     description: "Application of primers, reinforcement mesh, and multiple top coats as per manufacturer standards.",
     icon: Layers
-  },
-  {
-    title: "5. Ponding Test",
-    description: "We flood the area with water for 48 hours to prove the seal before final handover.",
-    icon: CheckSquare
   }
 ];
 
@@ -380,7 +373,7 @@ export const PROJECTS: Project[] = [
     title: 'Expansion Joint Treatment',
     category: 'Industrial',
     subCategory: 'Joint Sealing',
-    location: 'Warangal, Telangana',
+    location: 'Kondapur, Hyderabad',
     description: 'Sealing of 50mm expansion joints in a factory floor.',
     problem: 'Water ingress through joints damaging machinery.',
     solution: 'Installed backer rods and filled with gun-grade polysulphide sealant.',
@@ -413,7 +406,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: '3',
     name: 'Amit Sharma',
     role: 'Civil Engineer',
-    location: 'Warangal',
+    location: 'Madhapur, Hyderabad',
     content: 'Technically sound team. They understood the structural expansion joint problem immediately and provided the correct polysulphide sealant solution. Good attention to detail.',
     rating: 4,
     date: 'Jan 2024'

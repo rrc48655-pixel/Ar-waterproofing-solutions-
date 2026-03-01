@@ -29,9 +29,6 @@ interface LocationCoords {
 const LOCATIONS: LocationCoords[] = [
   { name: 'Hyderabad (HQ)', lat: 17.3850, lng: 78.4867, radius: 25000, description: 'Central Hub - 24/7 Emergency Teams Available' },
   { name: 'Secunderabad', lat: 17.4399, lng: 78.4983, radius: 10000, description: 'Residential & Commercial Specialists' },
-  { name: 'Warangal', lat: 17.9689, lng: 79.5941, radius: 15000, description: 'Regional Service Center for North Telangana' },
-  { name: 'Visakhapatnam', lat: 17.6868, lng: 83.2185, radius: 15000, description: 'Coastal Waterproofing & Marine Concrete Repair' },
-  { name: 'Vijayawada', lat: 16.5062, lng: 80.6480, radius: 12000, description: 'Expert Sump & Tank Waterproofing Hub' },
   { name: 'Gachibowli', lat: 17.4401, lng: 78.3489, radius: 5000, description: 'IT Corridor Commercial Solutions' }
 ];
 
@@ -139,6 +136,7 @@ const Contact: React.FC = () => {
     e.preventDefault();
     if (validateForm()) {
       setSubmitted(true);
+      window.open(getWhatsAppUrl(), '_blank');
     }
   };
 
@@ -152,9 +150,9 @@ const Contact: React.FC = () => {
   return (
     <div className="pt-20 font-sans">
       <SEO 
-        title="Contact AR Waterproofing | Best Services in Hyderabad"
-        description="Get a free quote for waterproofing services in Hyderabad. Contact AR Waterproofing Solutions for expert leak detection and permanent structural repairs."
-        keywords="contact waterproofing Hyderabad, free inspection Hyderabad, AR Waterproofing contact"
+        title="Contact AR Waterproofing Solutions | Free Inspection in Hyderabad"
+        description="Get a free quote and technical inspection for waterproofing services in Hyderabad. Contact AR Waterproofing Solutions for expert leak detection and permanent structural repairs."
+        keywords="contact waterproofing Hyderabad, free waterproofing inspection Hyderabad, AR Waterproofing contact, hire waterproofing contractor, waterproofing quote Hyderabad"
       />
       <div className="bg-slate-900 py-24 text-center">
         <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6">Get a Free Inspection</h1>
@@ -183,7 +181,7 @@ const Contact: React.FC = () => {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-8">Contact Information</h2>
               <p className="text-slate-600 mb-10 leading-relaxed">
-                 Our team is available Monday to Saturday to answer your technical queries and schedule site visits across Hyderabad & Telangana.
+                 Our team is available Monday to Saturday to answer your technical queries and provide free quotes across Hyderabad & Telangana.
               </p>
 
               <div className="space-y-8 mb-12">
@@ -268,7 +266,7 @@ const Contact: React.FC = () => {
                         <input 
                            type="text" 
                            className={`w-full px-4 py-3 rounded-lg border focus:ring-2 outline-none transition-all bg-gray-50 focus:bg-white ${errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-brand-500 focus:border-brand-500'}`}
-                           placeholder="John Doe"
+                           placeholder="Shiv Ram"
                            value={formData.name}
                            onChange={(e) => {
                              setFormData({...formData, name: e.target.value});
@@ -282,7 +280,7 @@ const Contact: React.FC = () => {
                         <input 
                            type="tel" 
                            className={`w-full px-4 py-3 rounded-lg border focus:ring-2 outline-none transition-all bg-gray-50 focus:bg-white ${errors.phone ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-brand-500 focus:border-brand-500'}`}
-                           placeholder="98765 43210"
+                           placeholder={`e.g. ${PHONE_NUMBER}`}
                            value={formData.phone}
                            onChange={(e) => {
                              setFormData({...formData, phone: e.target.value});
@@ -340,6 +338,7 @@ const Contact: React.FC = () => {
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                     ></textarea>
                   </div>
+
                   <button 
                     type="submit" 
                     className="w-full bg-brand-600 text-white font-bold py-4 rounded-lg hover:bg-brand-700 transition-colors flex items-center justify-center gap-2 shadow-lg mt-2 text-lg"
@@ -410,7 +409,7 @@ const Contact: React.FC = () => {
                          </div>
                          <h3 className="text-xl font-bold mb-4">Select an Area</h3>
                          <p className="text-brand-100 text-sm leading-relaxed mb-6">
-                            We currently operate in {SERVICE_AREAS.length} major districts across Telangana and Andhra Pradesh. Click a map marker to view localized response details.
+                            We currently operate in Hyderabad, Secunderabad, and surrounding areas. Click a map marker to view localized response details.
                          </p>
                          <div className="flex flex-wrap gap-2 justify-center opacity-60">
                             {SERVICE_AREAS.slice(0, 4).map(s => (

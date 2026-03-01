@@ -32,9 +32,9 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col font-sans">
       <SEO 
-        title="Best Waterproofing Services in Hyderabad | AR Solutions"
-        description="Expert waterproofing services in Hyderabad for terraces, bathrooms & sumps. 10-year warranty & free inspection. Protect your home from leaks today!"
-        keywords="waterproofing services in Hyderabad, terrace waterproofing, bathroom leakage repair, sump waterproofing, AR Waterproofing Solutions"
+        title="Best Waterproofing Services in Hyderabad | AR Waterproofing Solutions"
+        description="Expert waterproofing services in Hyderabad for terraces, bathrooms, basements & sumps. 10-year warranty, advanced chemical treatments & free inspection. Protect your home from leaks today!"
+        keywords="waterproofing services in Hyderabad, terrace waterproofing, bathroom leakage repair, basement waterproofing, sump waterproofing, AR Waterproofing Solutions, best waterproofing contractors"
       />
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center justify-center pt-24 pb-20 overflow-hidden bg-brand-900 group">
@@ -51,11 +51,11 @@ const Home: React.FC = () => {
               <img 
                 src={img} 
                 alt={`Slide ${index + 1}`} 
-                className="w-full h-full object-cover opacity-30"
+                className="w-full h-full object-cover opacity-80"
               />
             </div>
           ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-900/80 via-brand-900/50 to-brand-900/80"></div>
         </div>
 
         {/* Carousel Controls (Arrows) */}
@@ -83,7 +83,7 @@ const Home: React.FC = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 shadow-sm font-sans tracking-tight">
-              Expert Waterproofing Solutions for <span className="text-accent-500">Reliable Protection</span>
+              Expert Waterproofing Solutions for Reliable Protection
             </h1>
             
             <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-5 duration-700 delay-150 leading-relaxed font-light">
@@ -97,12 +97,6 @@ const Home: React.FC = () => {
               >
                 <Phone size={18} className="mr-2 text-brand-600" /> Call Now
               </a>
-              <Link 
-                to="/contact"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center px-7 py-4 bg-accent-500 text-brand-900 text-base font-bold rounded-xl shadow-xl hover:bg-accent-400 transition-all transform hover:-translate-y-1 min-w-[220px] border-b-4 border-accent-700 active:border-b-0 active:translate-y-0"
-              >
-                <ShieldCheck size={18} className="mr-2" /> Book Free Inspection
-              </Link>
               <a 
                 href={WHATSAPP_LINK}
                 target="_blank"
@@ -115,7 +109,6 @@ const Home: React.FC = () => {
 
             <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 justify-center text-gray-400 text-sm font-semibold animate-in fade-in slide-in-from-bottom-7 delay-500 uppercase tracking-wider">
                 <div className="flex items-center gap-2"><ShieldCheck size={18} className="text-accent-500" /> 10-Year Warranty</div>
-                <div className="flex items-center gap-2"><CheckCircle size={18} className="text-accent-500" /> GST Verified</div>
                 <div className="flex items-center gap-2"><CheckCircle size={18} className="text-accent-500" /> Authorized Applicators</div>
             </div>
 
@@ -229,31 +222,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Project Gallery Grid */}
-      <section className="py-24 bg-brand-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center mb-16">
-              <span className="text-accent-500 font-bold tracking-widest uppercase text-xs">Our Portfolio</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold mt-3">Recent Projects</h2>
-              <div className="w-20 h-1 bg-accent-500 mx-auto mt-6"></div>
-           </div>
-           
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {PROJECTS.slice(0, 2).map((project) => (
-                 <ProjectCard key={project.id} project={project} />
-              ))}
-           </div>
-           
-           <div className="mt-16 text-center">
-              <Link to="/projects" className="inline-flex items-center justify-center px-10 py-4 bg-accent-500 text-brand-900 hover:bg-white rounded-lg font-bold transition-colors uppercase tracking-widest text-sm">
-                 View All Projects <ArrowRight size={18} className="ml-2" />
-              </Link>
-           </div>
-        </div>
-      </section>
-
       {/* Why Waterproofing Fails Section (Educational) */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-gray-50 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
@@ -286,7 +256,6 @@ const Home: React.FC = () => {
                          "Root cause analysis to find moisture path",
                          "Checking slope levels of terrace",
                          "Sound test for hollow tiles",
-                         "pH test of concrete surface",
                          "Measuring crack width for correct filler selection"
                       ].map((item, i) => (
                          <li key={i} className="flex items-center gap-4">
@@ -297,7 +266,7 @@ const Home: React.FC = () => {
                    </ul>
                    <div className="mt-10 pt-8 border-t border-white/10">
                       <Link to="/contact" className="w-full block text-center bg-accent-500 hover:bg-white hover:text-brand-900 text-brand-900 font-bold py-4 transition-colors uppercase tracking-widest text-xs">
-                         Schedule a Technical Inspection
+                         Get Free Quote
                       </Link>
                    </div>
                 </div>
@@ -305,16 +274,39 @@ const Home: React.FC = () => {
           </div>
       </section>
 
+      {/* Project Gallery Grid */}
+      <section className="py-24 bg-brand-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="text-center mb-16">
+              <span className="text-accent-500 font-bold tracking-widest uppercase text-xs">Our Portfolio</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold mt-3">Recent Projects</h2>
+              <div className="w-20 h-1 bg-accent-500 mx-auto mt-6"></div>
+           </div>
+           
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {PROJECTS.slice(0, 2).map((project) => (
+                 <ProjectCard key={project.id} project={project} />
+              ))}
+           </div>
+           
+           <div className="mt-16 text-center">
+              <Link to="/projects" className="inline-flex items-center justify-center px-10 py-4 bg-accent-500 text-brand-900 hover:bg-white rounded-lg font-bold transition-colors uppercase tracking-widest text-sm">
+                 View All Projects <ArrowRight size={18} className="ml-2" />
+              </Link>
+           </div>
+        </div>
+      </section>
+
       {/* Process Section */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <span className="text-accent-500 font-bold tracking-widest uppercase text-xs">Process</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-3">From Leak to Leak-Free in 5 Steps</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-3">From Leak to Leak-Free in 4 Steps</h2>
             <div className="w-20 h-1 bg-accent-500 mx-auto mt-6"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
              <div className="hidden lg:block absolute top-10 left-0 right-0 h-0.5 bg-gray-200 z-0 mx-20"></div>
               {PROCESS_STEPS.map((step, index) => (
                 <div key={index} className="flex flex-col items-center text-center group relative z-10">
@@ -414,7 +406,7 @@ const Home: React.FC = () => {
               to="/contact" 
               className="flex-1 sm:flex-none inline-flex items-center justify-center px-8 py-4 bg-accent-500 text-brand-900 text-base font-bold rounded-xl shadow-xl hover:bg-accent-400 transition-all transform hover:-translate-y-1 min-w-[220px] border-b-4 border-accent-700 active:border-b-0 active:translate-y-0"
             >
-              <ShieldCheck size={18} className="mr-2" /> Book Free Site Visit
+              <ShieldCheck size={18} className="mr-2" /> Get Free Quote
             </Link>
             <a 
               href={WHATSAPP_LINK} 

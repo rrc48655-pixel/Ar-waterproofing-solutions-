@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { ADDRESS, COMPANY_NAME, EMAIL_ADDRESS, NAV_ITEMS, PHONE_NUMBER, SOCIAL_LINKS, SERVICE_AREAS } from '../constants';
 
-import logo from '../Waterproofing_20250830_114503_0000.png';
+import logo from '../Waterproofing - 3.png';
 
 const Footer: React.FC = () => {
   return (
@@ -13,12 +13,12 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-6 group">
-              <div className="h-12 w-12 overflow-hidden rounded-lg border border-slate-700 shadow-lg">
-                <img src={logo} alt={COMPANY_NAME} className="w-full h-full object-cover scale-110" />
+              <div className="h-16 w-16 overflow-hidden rounded-lg border border-slate-700 shadow-lg">
+                <img src={logo} alt={COMPANY_NAME} className="w-full h-full object-cover scale-125" />
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-white leading-tight tracking-tight">
-                  AR Waterproofing
+                  Waterproofing
                 </span>
                 <span className="text-[10px] text-brand-500 uppercase tracking-widest font-black">
                   Solutions
@@ -28,18 +28,19 @@ const Footer: React.FC = () => {
             <p className="text-sm leading-relaxed mb-6 text-slate-400">
               India's trusted waterproofing experts. We provide guaranteed solutions for residential, commercial, and industrial properties using advanced chemical technology.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mt-8">
               {/* Facebook Icon */}
               <a 
                 href={SOCIAL_LINKS.facebook} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-[#1877F2] text-white shadow-lg border border-transparent hover:shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" 
+                className="group relative w-10 h-10 flex items-center justify-center rounded-full bg-[#1877F2] text-white shadow-md hover:shadow-lg hover:shadow-blue-500/40 transition-all duration-300 hover:-translate-y-1 hover:scale-110" 
                 aria-label="Visit our Facebook Page"
-                title="Facebook"
               >
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <Facebook size={20} className="group-hover:scale-110 transition-transform duration-300" />
+                <Facebook size={20} />
+                <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2.5 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-lg border border-slate-700">
+                  Visit our Facebook Page
+                </span>
               </a>
               
               {/* Instagram Icon */}
@@ -47,12 +48,13 @@ const Footer: React.FC = () => {
                 href={SOCIAL_LINKS.instagram}
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-tr from-[#fdf497] via-[#f09433] via-[#dc2743] via-[#cc2366] to-[#bc1888] text-white shadow-lg border border-transparent hover:shadow-pink-500/30 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" 
+                className="group relative w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-tr from-[#fdf497] via-[#f09433] via-[#dc2743] via-[#cc2366] to-[#bc1888] text-white shadow-md hover:shadow-lg hover:shadow-pink-500/40 transition-all duration-300 hover:-translate-y-1 hover:scale-110" 
                 aria-label="Visit our Instagram Profile"
-                title="Instagram"
               >
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <Instagram size={20} className="group-hover:scale-110 transition-transform duration-300" />
+                <Instagram size={20} />
+                <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2.5 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-lg border border-slate-700">
+                  Visit our Instagram Profile
+                </span>
               </a>
 
               {/* YouTube Icon */}
@@ -60,12 +62,13 @@ const Footer: React.FC = () => {
                 href={SOCIAL_LINKS.youtube} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF0000] text-white shadow-lg border border-transparent hover:shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" 
+                className="group relative w-10 h-10 flex items-center justify-center rounded-full bg-[#FF0000] text-white shadow-md hover:shadow-lg hover:shadow-red-500/40 transition-all duration-300 hover:-translate-y-1 hover:scale-110" 
                 aria-label="Visit our YouTube Channel"
-                title="YouTube"
               >
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <Youtube size={20} className="group-hover:scale-110 transition-transform duration-300" />
+                <Youtube size={20} />
+                <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2.5 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-lg border border-slate-700">
+                  Visit our YouTube Channel
+                </span>
               </a>
             </div>
           </div>

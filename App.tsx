@@ -9,6 +9,8 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
+import Faqs from './pages/Faqs';
+import Reviews from './pages/Reviews';
 
 // Scroll to top wrapper
 const ScrollToTop = () => {
@@ -21,7 +23,7 @@ const ScrollToTop = () => {
     });
   }, [pathname]);
   return null;
-};
+}
 
 const App: React.FC = () => {
   return (
@@ -37,6 +39,8 @@ const App: React.FC = () => {
               <Route path="/services" element={<Services />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/faqs" element={<Faqs />} />
+              <Route path="/reviews" element={<Reviews />} />
             </Routes>
           </main>
           <Footer />

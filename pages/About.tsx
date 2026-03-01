@@ -8,9 +8,9 @@ const About: React.FC = () => {
   return (
     <div className="pt-20 font-sans">
       <SEO 
-        title="About AR Waterproofing Solutions | Hyderabad's Experts"
-        description="Leading waterproofing specialists in Hyderabad with 12+ years of experience. We use advanced chemicals to provide permanent leak-proof solutions."
-        keywords="about AR Waterproofing, waterproofing experts Hyderabad, structural protection Hyderabad"
+        title="About AR Waterproofing Solutions | Hyderabad's Trusted Experts"
+        description="Leading waterproofing specialists in Hyderabad with 12+ years of experience. We use advanced chemical technology to provide permanent, guaranteed leak-proof solutions for residential and commercial properties."
+        keywords="about AR Waterproofing, waterproofing experts Hyderabad, structural protection Hyderabad, professional waterproofing contractors, AR Waterproofing company profile"
       />
       {/* Header */}
       <div className="bg-slate-900 py-24 text-center">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Eye } from 'lucide-react';
+import { MapPin, MousePointerClick } from 'lucide-react';
 import { Project } from '../types';
 
 interface ProjectCardProps {
@@ -11,7 +11,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const hasBefore = !!project.beforeImage;
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col h-full">
+    <div 
+      className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col h-full"
+      itemScope 
+      itemType="https://schema.org/CreativeWork"
+    >
+      <meta itemProp="description" content={project.description} />
+      <meta itemProp="keywords" content={`${project.category}, ${project.subCategory}, waterproofing, ${project.location}`} />
+      
       {/* Image Container */}
       <div 
         className="relative overflow-hidden h-72 bg-slate-900 cursor-pointer" 
@@ -22,7 +29,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
            {/* After Image (Always rendered at bottom) */}
            <img 
             src={project.afterImage} 
-            alt={`${project.title} - After`} 
+            alt={`${project.title} - After Waterproofing Treatment`} 
+            itemProp="image"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
           
@@ -30,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {hasBefore && (
             <img 
               src={project.beforeImage} 
-              alt={`${project.title} - Before`} 
+              alt={`${project.title} - Before Waterproofing Treatment`} 
               className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110 ${showBefore ? 'opacity-100' : 'opacity-0'}`}
             />
           )}
@@ -85,8 +93,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {/* Hint Overlay */}
         {hasBefore && (
            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <div className="bg-black/40 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 border border-white/20">
-                 <Eye size={14} /> Click to Toggle
+              <div className="bg-black/60 backdrop-blur-md text-white px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 border border-white/30 shadow-xl animate-pulse">
+                 <MousePointerClick size={16} /> Tap to Toggle
               </div>
            </div>
         )}
@@ -95,10 +103,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
         <div className="mb-4">
-           <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors mb-2">{project.title}</h3>
+           <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors mb-2" itemProp="name">{project.title}</h3>
            {project.location && (
-              <div className="flex items-center text-slate-500 text-xs font-medium">
-                  <MapPin size={14} className="mr-1 text-brand-500" /> {project.location}
+              <div className="flex items-center text-slate-500 text-xs font-medium" itemProp="contentLocation" itemScope itemType="https://schema.org/Place">
+                  <MapPin size={14} className="mr-1 text-brand-500" /> 
+                  <span itemProp="name">{project.location}</span>
               </div>
            )}
         </div>

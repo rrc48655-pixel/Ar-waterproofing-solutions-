@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { NAV_ITEMS, PHONE_NUMBER } from '../constants';
-import { WaterproofingIcon } from './WaterproofingIcon';
 
-import logo from '../Waterproofing_20250830_114503_0000.png';
+import logo from '../Waterproofing - 1 (1)1.png';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,26 +38,18 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center">
           
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group" aria-label="Home">
-            <div className={`overflow-hidden rounded-lg border border-slate-100 shadow-sm transition-all duration-300 ${scrolled ? 'h-10 w-10' : 'h-14 w-14'}`}>
+          <Link to="/" className="flex items-center group" aria-label="Home">
+            <div className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-14'}`}>
               <img 
                 src={logo} 
                 alt="AR Waterproofing" 
-                className="w-full h-full object-cover scale-110"
+                className="h-full w-auto object-contain"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className={`font-bold text-slate-900 leading-tight tracking-tight transition-all duration-300 ${scrolled ? 'text-lg' : 'text-xl'}`}>
-                AR Waterproofing
-              </span>
-              <span className="text-[10px] text-brand-600 uppercase tracking-widest font-black">
-                Solutions
-              </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-4 lg:gap-6">
             {NAV_ITEMS.map((item) => (
               <Link 
                 key={item.path} 
